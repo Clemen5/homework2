@@ -1,0 +1,18 @@
+[
+  {
+    "model": "yalib.library",
+    "pk": 1,
+    "fields": {
+      "name": "Universitätsbibliothek",
+      "address": "Universitätsplatz 3"
+    }
+  },
+  {
+    "model": "yalib.library",
+    "pk": 2,
+    "fields": {
+      "name": "Stadtbücherei",
+      "address": "Vinzenzgasse 20"
+    }
+  }
+]

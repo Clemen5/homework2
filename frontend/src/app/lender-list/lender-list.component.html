@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="lenders">
+
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef>Firstname</th>
+    <td mat-cell *matCellDef="let lender">{{lender.first_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef>Lastname</th>
+    <td mat-cell *matCellDef="let lender">{{lender.last_name}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="lending_date">
+  <th mat-header-cell *matHeaderCellDef>Lending Date</th>
+  <td mat-cell *matCellDef="let lender">{{lender.lending_date}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="year_of_birth">
+    <th mat-header-cell *matHeaderCellDef>Year of Birth</th>
+    <td mat-cell *matCellDef="let lender">{{lender.year_of_birth}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let lender">
+      <button mat-button [routerLink]="'/lender-form/' + lender.id">Edit</button>
+      <button mat-button (click)="deleteLender(lender)" *ngIf="userService.hasPermission('yalib.delete_lender')">Delete</button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

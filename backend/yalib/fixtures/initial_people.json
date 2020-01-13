@@ -1,0 +1,38 @@
+[
+  {
+    "model": "yalib.author",
+    "pk": 1,
+    "fields": {
+      "first_name": "Hermann",
+      "last_name": "Hesse",
+      "year_of_birth": 1956
+    }
+  },
+  {
+    "model": "yalib.author",
+    "pk": 2,
+    "fields": {
+      "first_name": "Peter",
+      "last_name": "Handke",
+      "year_of_birth": 1965
+    }
+  },
+  {
+    "model": "yalib.author",
+    "pk": 3,
+    "fields": {
+      "first_name": "John R. R.",
+      "last_name": "Tolkien",
+      "year_of_birth": 1984
+    }
+  },
+  {
+    "model": "yalib.author",
+    "pk": 4,
+    "fields": {
+      "first_name": "Joanne K.",
+      "last_name": "Rowling",
+      "year_of_birth": 1990
+    }
+  }
+]

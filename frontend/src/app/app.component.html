@@ -1,0 +1,37 @@
+<mat-toolbar *ngIf="isLoggedIn">
+  <button mat-button [matMenuTriggerFor]="bookMenu">Book</button>
+  <mat-menu #bookMenu="matMenu">
+    <button mat-menu-item routerLink="book-list">List books</button>
+    <button mat-menu-item routerLink="book-form">Create books</button>
+
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="lenderMenu">Lender</button>
+  <mat-menu #lenderMenu="matMenu">
+    <button mat-menu-item routerLink="lender-list">List lenders</button>
+    <button mat-menu-item routerLink="lender-form">Create lenders</button>
+  </mat-menu>
+  <app-logout></app-logout>
+</mat-toolbar>
+<router-outlet></router-outlet>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>Click on the map to mark a location:</h2>
+
+<agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>
+</agm-map>

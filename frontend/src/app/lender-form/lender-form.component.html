@@ -1,0 +1,28 @@
+<form [formGroup]="lenderFormGroup" class="lender-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Firstname" formControlName="first_name" required>
+    <mat-hint align="end">The firstname of the lender</mat-hint>
+    <mat-error *ngIf="lenderFormGroup.controls.first_name.hasError('required')">Firstname is required</mat-error>
+    <mat-error *ngIf="lenderFormGroup.controls.first_name.hasError('nameAlreadyExists')">Firstname already exists</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Lastname" formControlName="last_name" required>
+    <mat-hint align="end">The lastname of the lender</mat-hint>
+    <mat-error *ngIf="lenderFormGroup.controls.last_name.hasError('required')">Lastname is required</mat-error>
+    <mat-error *ngIf="lenderFormGroup.controls.last_name.hasError('nameAlreadyExists')">Lastname already exists</mat-error>
+  </mat-form-field>
+  <app-date placeholder="Lending date" formControlName="lending_date" hint="The lending date of the book"
+            [required]="true"></app-date>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Year of birth" formControlName="year_of_birth">
+    <mat-hint align="end">The birthyear of the lender</mat-hint>
+    <mat-error *ngIf="lenderFormGroup.controls.year_of_birth.hasError('max')">That's in the future</mat-error>
+  </mat-form-field>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!lenderFormGroup.valid" (click)="createLender()">
+      <span *ngIf="!lenderFormGroup.controls.id.value">Create</span>
+      <span *ngIf="lenderFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>

@@ -1,0 +1,63 @@
+<form [formGroup]="bookFormGroup" class="book-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Title" formControlName="title" required>
+    <mat-hint align="end">The title of the book</mat-hint>
+    <mat-error *ngIf="bookFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+    <mat-error *ngIf="bookFormGroup.controls.title.hasError('titleAlreadyExists')">Title already exists</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Genre" formControlName="genre">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option [value]="genre.key"
+                  *ngFor="let genre of genreService.genreNames | keyvalue">{{genre.value}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The genre of the book</mat-hint>
+  </mat-form-field>
+  <app-date placeholder="Release date" formControlName="release_date" hint="The release date of the book"
+            [required]="true"></app-date>
+  <div *ngIf="age !== undefined">
+    Age: {{age}}
+  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="Plot" formControlName="plot" required></textarea>
+    <mat-hint align="end">The plot of the book</mat-hint>
+    <mat-error *ngIf="bookFormGroup.controls.plot.hasError('required')">Plot is required</mat-error>
+    <mat-error *ngIf="bookFormGroup.controls.plot.hasError('badWord')">Plot contains "bad word"</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Pages" formControlName="pages">
+    <mat-hint align="end">The pages of the book</mat-hint>
+    <mat-error *ngIf="bookFormGroup.controls.pages.hasError('max')">Pages too much</mat-error>
+  </mat-form-field>
+  <mat-checkbox formControlName="e_book">E-book</mat-checkbox>
+  <mat-form-field>
+    <mat-select placeholder="Library" formControlName="library">
+      <mat-option [value]="null">Library</mat-option>
+      <mat-option [value]="libraryOption.id"
+                  *ngFor="let libraryOption of libraryOptions">{{libraryOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The library of the book</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Authors" formControlName="authors" multiple>
+      <mat-option [value]="authorOption.id"
+                  *ngFor="let authorOption of authorOptions">{{authorOption.first_name}} {{authorOption.last_name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The author of the book</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Lender" formControlName="lender" >
+      <mat-option [value]="null">Library</mat-option>
+      <mat-option [value]="lenderOption.id"
+                  *ngFor="let lenderOption of lenderOptions">{{lenderOption.first_name}} {{lenderOption.last_name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The lender of the book</mat-hint>
+  </mat-form-field>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!bookFormGroup.valid" (click)="createBook()">
+      <span *ngIf="!bookFormGroup.controls.id.value">Create</span>
+      <span *ngIf="bookFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
